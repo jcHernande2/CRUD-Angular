@@ -1,0 +1,67 @@
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+
+    <app-form-add  (DatoPersonalAdded)="addDatos($event)" [infoPersonalEdit]="datoInfoEdit" [Email]="'ok es una prueba'"></app-form-add>
+      
+
+  <div class="clearfix"></div>
+  <div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Datos <small>Listado de informacion</small></h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                </li>
+                <li><a href="#">Settings 2</a>
+                </li>
+              </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Numner</th>
+                <th>Ocupacion</th>
+                <th>phone</th>
+                <th>Observacion</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dato of DatosPersonales" class="list-group-item-action" (click)="openForEdit(dato)" [class.active]="dato==datoInfoEdit">
+                <td></td>
+                <td>{{dato.name}}</td>
+                <td>{{dato.email}}</td>
+                <td>{{dato.number}}</td>
+                <td>{{dato.ocupation}}</td>
+                <td>{{dato.pone}}</td>
+                <td>{{dato.textarea}}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</div>
+<!-- /page content -->
+
