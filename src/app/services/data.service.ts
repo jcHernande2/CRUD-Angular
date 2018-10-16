@@ -28,13 +28,13 @@ export class DataService {
     //this.DatosPersonales=new Array();
   }
   getInfoPersonal():InfoPersonal[]{
-    /*if(localStorage.getItem["DatosPersonales"]===null)
+    if(localStorage.getItem["DatosPersonales"]===null)
     {
-      this.DatosPersonales=;
+      this.DatosPersonales=[];
     }
-    else{*/
-     // this.DatosPersonales=JSON.parse(localStorage.getItem("DatosPersonales"));
-   // }
+    else{
+      this.DatosPersonales=JSON.parse(localStorage.getItem("DatosPersonales"));
+    }
     return this.DatosPersonales;
   }
   addInfoPersonal(DatoPersonal:InfoPersonal):void{
@@ -44,18 +44,19 @@ export class DataService {
     //});
    console.log(DatoPersonal);
   // this.DatosPersonales.push(DatoPersonal);
-    this.DatosPersonales.unshift(DatoPersonal);
+    //this.DatosPersonales.unshift(DatoPersonal);
     let DatosPersonales;
     if(localStorage.getItem("DatosPersonales")===null)
     {
       DatosPersonales=[];
       DatosPersonales.unshift(DatoPersonal);
-      localStorage.setItem(" DatosPersonales",JSON.stringify(DatosPersonales));
+      localStorage.setItem("DatosPersonales",JSON.stringify(DatosPersonales));
     }else{
       DatosPersonales=JSON.parse(localStorage.getItem("DatosPersonales"));
       DatosPersonales.unshift(DatoPersonal);
-      localStorage.setItem(" DatosPersonales",JSON.stringify(DatosPersonales));
+      localStorage.setItem("DatosPersonales",JSON.stringify(DatosPersonales));
     }
+    //this.getInfoPersonal();
   }
   removeInfoPersonal(DatoPersonal:InfoPersonal){
     for(let i=0;this.DatosPersonales.length;i++){

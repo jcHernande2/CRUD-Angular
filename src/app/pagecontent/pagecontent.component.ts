@@ -24,6 +24,7 @@ export class PagecontentComponent implements OnInit {
   {
     
     this.dataService.addInfoPersonal(DatoPersonal);
+    this.DatosPersonales=this.dataService.getInfoPersonal();
   }
   openForEdit(dato:InfoPersonal){
     //console.log(dato);

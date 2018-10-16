@@ -40,7 +40,7 @@
                 <th>Ocupacion</th>
                 <th>phone</th>
                 <th>Observacion</th>
-                
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -52,6 +52,10 @@
                 <td>{{dato.ocupation}}</td>
                 <td>{{dato.pone}}</td>
                 <td>{{dato.textarea}}</td>
+                <td>
+                  <button (click)="editar()" class="blue"><i class="fa fa-edit"></i></button>
+                  <button class="red"><i class="fa fa-trash"></i></button>
+                </td>
               </tr>
               
             </tbody>
