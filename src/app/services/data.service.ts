@@ -5,24 +5,7 @@ import{InfoPersonal} from "../models/info-personal";
   providedIn: 'root'
 })
 export class DataService {
-  DatosPersonales:InfoPersonal[]=[
-    {
-    name: "fer juan",
-    email: "juan@hiis",
-    number:0,
-    occupation:" string",
-    phone: "string",
-    textarea: ""
-    },
-    {
-      name: "juan",
-      email: "hhjuan27@g",
-      number:0,
-      occupation:" string",
-      phone: "string",
-      textarea: ""
-      }
-  ];
+  DatosPersonales:InfoPersonal[]=[];
 
   constructor() { 
     //this.DatosPersonales=new Array();
@@ -68,6 +51,19 @@ export class DataService {
         localStorage.setItem("DatosPersonales",JSON.stringify(this.DatosPersonales));
       }
     }
+  }
+  DatoPersonalUpdate(DatoPersonal:InfoPersonal):void{
+    for(let i=0;i<this.DatosPersonales.length;i++){
+      if(DatoPersonal.email==this.DatosPersonales[i].email)
+      {
+        //console.log("entro a cambiar");
+        this.DatosPersonales[i]=DatoPersonal;
+        //this.DatosPersonales.splice(i,1);
+        localStorage.setItem("DatosPersonales",JSON.stringify(this.DatosPersonales));
+      }
+    }
+   
+    
   }
  
 }

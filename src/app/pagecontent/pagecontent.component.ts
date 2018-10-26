@@ -1,13 +1,16 @@
-import { Component, OnInit,EventEmitter,Input} from '@angular/core';
+import { Component, OnInit,EventEmitter,Input,ViewChild} from '@angular/core';
 import {InfoPersonal} from "../models/info-personal";
 import {DataService} from "../services/data.service";
+import { FormAddComponent } from '../form-add/form-add.component';
+
 @Component({
 
   selector: 'app-pagecontent',
   templateUrl: './pagecontent.component.html',
   styleUrls: ['./pagecontent.component.css']
 })
-export class PagecontentComponent implements OnInit {
+export class PagecontentComponent implements OnInit  {
+  @ViewChild("formedit") hijo: FormAddComponent;
   DatosPersonales:InfoPersonal[];
   datoInfoEdit:InfoPersonal;
   nombreusuario:string;
@@ -15,14 +18,21 @@ export class PagecontentComponent implements OnInit {
     
 
   }
-
+ 
   ngOnInit() {
     this.DatosPersonales=this.dataService.getInfoPersonal();
   }
+ 
   addDatos(DatoPersonal:InfoPersonal)
   {
     
     this.dataService.addInfoPersonal(DatoPersonal);
+    this.DatosPersonales=this.dataService.getInfoPersonal();
+  }
+  updateDatos(DatoPersonal:InfoPersonal)
+  {
+    
+    this.dataService.DatoPersonalUpdate(DatoPersonal);
     this.DatosPersonales=this.dataService.getInfoPersonal();
   }
   delete(dato:InfoPersonal){
@@ -31,32 +41,11 @@ export class PagecontentComponent implements OnInit {
       this.dataService.removeInfoPersonal(dato);
   }
   openForEdit(dato:InfoPersonal){
-    //console .log("entro a editar");
-    //console.log(dato);
-    //this.datoInfoEdit=dato;
-    //var obj = { a: 1 };
-    this.datoInfoEdit = Object.assign({}, dato);
+    this.hijo.DatosPersonales=dato;
+    this.hijo.edit=true;
     //console.log(copy); // { a: 1 }
     this.nombreusuario="juan Carlos  hhhh";// si pasa
-    //console.log("entraaa");
-    //console.log(this.datoInfoEdit);
-    /*this.datoInfoEdit={
-      name:dato.name,
-    email:dato.email,
-    number:dato.number,
-    occupation:dato.occupation,
-    phone: dato.phone,
-    textarea:dato.textarea
-  };*/
-    //console.log(this.datoInfoEdit);
-   /* this.infoPersonalEdit.emit({
-      name: dato.name,
-      email: dato.email,
-      number: dato.number,
-      occupation: dato.occupation,
-      phone: dato.phone,
-      textarea: dato.textarea
-    });*/
+    
   }
   
   

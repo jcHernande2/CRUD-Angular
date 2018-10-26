@@ -2,7 +2,7 @@
 <div class="right_col" role="main">
   <div class="">
 
-    <app-form-add  (DatoPersonalAdded)="addDatos($event)" [infoPersonalEdit]="datoInfoEdit" [nameUser]="nombreusuario" [Email]="'ok es una prueba'"></app-form-add>
+    <app-form-add #formedit (DatoPersonalAdded)="addDatos($event)" (DatoPersonalUpdate)="updateDatos($event)" [infoPersonalEdit]="datoInfoEdit" [nameUser]="nombreusuario" [Email]="'ok es una prueba'"></app-form-add>
       <!--[infoPersonalEdit]=datoInfoEdit-->
 
   <div class="clearfix"></div>

@@ -11,6 +11,7 @@ enableProdMode();
   styleUrls: ['./form-add.component.css']
 })
 export class FormAddComponent implements OnInit {
+  edit=false;
   DatosPersonales : InfoPersonal={
     name:"",
     email:"",
@@ -20,12 +21,15 @@ export class FormAddComponent implements OnInit {
     textarea:""
   };
   @Output() DatoPersonalAdded =new EventEmitter<InfoPersonal>();
+  @Output() DatoPersonalUpdate =new EventEmitter<InfoPersonal>();
+  
  /* name:string;
   email:string;*/
   @Input() infoPersonalEdit: InfoPersonal;
   @Input() nameUser:string;
   @Input() Nombre:string;
   @Input() Email:string;
+  
   constructor() { 
 
     //console.log(this.infoPersonalEdit);
@@ -33,30 +37,48 @@ export class FormAddComponent implements OnInit {
   ngOnInit() {
     //console.log("enta al edita11r");
   }
+  onEdit(datoEdit:InfoPersonal)
+  {
+    //console.log("entro al hijo");
+    console.log(datoEdit);
+  }
   onSubmit() { 
-    this.DatoPersonalAdded.emit({
-      name: this.DatosPersonales.name,
-      email: this.DatosPersonales.email,
-      number: this.DatosPersonales.number,
-      occupation: this.DatosPersonales.occupation,
-      phone: this.DatosPersonales.phone,
-      textarea: this.DatosPersonales.textarea
-    });
+    console.log(this.edit);
+    if(!this.edit){
+      this.DatoPersonalAdded.emit({
+        name: this.DatosPersonales.name,
+        email: this.DatosPersonales.email,
+        number: this.DatosPersonales.number,
+        occupation: this.DatosPersonales.occupation,
+        phone: this.DatosPersonales.phone,
+        textarea: this.DatosPersonales.textarea
+      });
+    }
+    else{
+      this.DatoPersonalUpdate.emit({
+        name: this.DatosPersonales.name,
+        email: this.DatosPersonales.email,
+        number: this.DatosPersonales.number,
+        occupation: this.DatosPersonales.occupation,
+        phone: this.DatosPersonales.phone,
+        textarea: this.DatosPersonales.textarea
+      });
+    }
     this.DatosPersonales.name="";
-     this.DatosPersonales.email="";
-      this.DatosPersonales.number=0;
-      this.DatosPersonales.occupation="";
-      this.DatosPersonales.phone="";
-      this.DatosPersonales.textarea="";
-  // alert("entra");
-    // console.log(this.DatosPersonales.name,this.DatosPersonales.email)
-    //alert("entra");
-    /*if (this.) {
-      console.log("Form Submitted!");
-      this.myform.reset();
-    }*/
+    this.DatosPersonales.email="";
+    this.DatosPersonales.number=0;
+    this.DatosPersonales.occupation="";
+    this.DatosPersonales.phone="";
+    this.DatosPersonales.textarea="";
+    this.edit=false;
   }
   backen(){
-    
+    this.DatosPersonales.name="";
+    this.DatosPersonales.email="";
+    this.DatosPersonales.number=0;
+    this.DatosPersonales.occupation="";
+    this.DatosPersonales.phone="";
+    this.DatosPersonales.textarea="";
+    this.edit=false;
   }
 }
