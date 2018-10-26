@@ -59,7 +59,9 @@ export class DataService {
     //this.getInfoPersonal();
   }
   removeInfoPersonal(DatoPersonal:InfoPersonal){
-    for(let i=0;this.DatosPersonales.length;i++){
+  //console.log("entro a eliminar");
+  //console.log(DatoPersonal);
+    for(let i=0;i<this.DatosPersonales.length;i++){
       if(DatoPersonal==this.DatosPersonales[i])
       {
         this.DatosPersonales.splice(i,1);

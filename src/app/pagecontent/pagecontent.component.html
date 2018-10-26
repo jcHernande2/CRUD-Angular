@@ -2,8 +2,8 @@
 <div class="right_col" role="main">
   <div class="">
 
-    <app-form-add  (DatoPersonalAdded)="addDatos($event)" [infoPersonalEdit]="datoInfoEdit" [Email]="'ok es una prueba'"></app-form-add>
-      
+    <app-form-add  (DatoPersonalAdded)="addDatos($event)" [infoPersonalEdit]="datoInfoEdit" [nameUser]="nombreusuario" [Email]="'ok es una prueba'"></app-form-add>
+      <!--[infoPersonalEdit]=datoInfoEdit-->
 
   <div class="clearfix"></div>
   <div class="row">
@@ -44,7 +44,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let dato of DatosPersonales" class="list-group-item-action" (click)="openForEdit(dato)" [class.active]="dato==datoInfoEdit">
+              <tr *ngFor="let dato of DatosPersonales" class="list-group-item-action" [class.active]="dato==datoInfoEdit">
                 <td></td>
                 <td>{{dato.name}}</td>
                 <td>{{dato.email}}</td>
@@ -53,8 +53,8 @@
                 <td>{{dato.pone}}</td>
                 <td>{{dato.textarea}}</td>
                 <td>
-                  <button (click)="editar()" class="blue"><i class="fa fa-edit"></i></button>
-                  <button class="red"><i class="fa fa-trash"></i></button>
+                  <button  (click)="openForEdit(dato)" class="blue"><i class="fa fa-edit"></i></button>
+                  <button (click)="delete(dato)" class="red"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
               

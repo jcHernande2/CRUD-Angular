@@ -9,9 +9,8 @@ import {DataService} from "../services/data.service";
 })
 export class PagecontentComponent implements OnInit {
   DatosPersonales:InfoPersonal[];
-  public datoInfoEdit:InfoPersonal;
-  //@Input() public infoPersonalEdit: InfoPersonal;
-  //@Input() infoPersonalEdit =new EventEmitter<InfoPersonal>()
+  datoInfoEdit:InfoPersonal;
+  nombreusuario:string;
   constructor(public dataService:DataService) { 
     
 
@@ -26,9 +25,21 @@ export class PagecontentComponent implements OnInit {
     this.dataService.addInfoPersonal(DatoPersonal);
     this.DatosPersonales=this.dataService.getInfoPersonal();
   }
+  delete(dato:InfoPersonal){
+    const conf=confirm("Esta seguro que desea eliminar el registro?")
+    if(conf)
+      this.dataService.removeInfoPersonal(dato);
+  }
   openForEdit(dato:InfoPersonal){
+    //console .log("entro a editar");
     //console.log(dato);
-    this.datoInfoEdit=dato;
+    //this.datoInfoEdit=dato;
+    //var obj = { a: 1 };
+    this.datoInfoEdit = Object.assign({}, dato);
+    //console.log(copy); // { a: 1 }
+    this.nombreusuario="juan Carlos  hhhh";// si pasa
+    //console.log("entraaa");
+    //console.log(this.datoInfoEdit);
     /*this.datoInfoEdit={
       name:dato.name,
     email:dato.email,

@@ -22,11 +22,16 @@ export class FormAddComponent implements OnInit {
   @Output() DatoPersonalAdded =new EventEmitter<InfoPersonal>();
  /* name:string;
   email:string;*/
-  @Input() infoPersonalEdit: InfoPersonal[];
+  @Input() infoPersonalEdit: InfoPersonal;
+  @Input() nameUser:string;
   @Input() Nombre:string;
   @Input() Email:string;
-  constructor() { }
+  constructor() { 
+
+    //console.log(this.infoPersonalEdit);
+  }
   ngOnInit() {
+    //console.log("enta al edita11r");
   }
   onSubmit() { 
     this.DatoPersonalAdded.emit({
